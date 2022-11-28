@@ -7,6 +7,7 @@
 :root {
 	--index: calc(1vw + 1vh);
 	--text: #e7e7e0;
+	--transition: transform .75s cubic-bezier(.150, .5, 0, .80);
 }
 
 @font-face {
@@ -27,20 +28,20 @@ body {
 }
 
 .main-header {
-    position: relative;
+	position: relative;
 }
 
 .main-header::after {
-    content: '';
+	content: '';
 	position: absolute;
 	z-index: 100;
 	width: 100%;
-    height: calc(var(--index) * 10);
-    background-image: url(../img/ground.png);
-    background-size: cover;
+	height: calc(var(--index) * 10);
+	background-image: url(../img/ground-min.png);
+	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-    bottom: calc(var(--index) * -4.9);
+	bottom: calc(var(--index) * -4.9);
 }
 
 .layers {
@@ -59,18 +60,14 @@ body {
 	position: absolute;
 	background-size: cover;
 	background-position: center;
-    will-change: transform;
+	will-change: transform;
 	z-index: 2;
 	transition: var(--transition);
 }
 
 .layers__base {
 	transform: translate3d(0, calc(var(--scrollTop) / 1.6), 0);
-    z-index: 0;
-}
-
-.main-article {
-    min-height: 100vh;
+	z-index: 0;
 }
 
 .layers__middle {
@@ -84,6 +81,7 @@ body {
 .layers__header {
     z-index: 1;
     transform: translate3d(0, calc(var(--scrollTop) / 1.2), 0);
+    transition: var(--transition);
     will-change: transform;
     font-weight: 900;
     color: white;
@@ -107,6 +105,7 @@ body {
     background-size: cover;
     background-position: center;
     color: var(--text);
+    text-shadow: #010101;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -119,12 +118,17 @@ body {
     font-size: calc(var(--index) * 1.8);
     letter-spacing: calc(var(--index) / 1.8);
     transform: var(--main-article-transform);
+    transition: var(--transition);
+    will-change: transform; 
 }
 
 .main-article__paragrash {
     max-width: calc(var(--index) * 35);
     font-size: calc(var(--index) * .9);
     margin-top: calc(var(--index) / .4);
+    transform: var(--main-article-transform);
+    transition: var(--transition);
+    will-change: transform;
 }
 
 .copy {
@@ -133,4 +137,7 @@ body {
     opacity: 70%;
     font-size: calc(var(--index) * .75);
     letter-spacing: calc(var(--index) / 37.5);
+}
+.content {
+    will-change: transform;
 }
